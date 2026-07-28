@@ -50,6 +50,7 @@ solutions/
 | ------- |
 | [0039-combination-sum](https://github.com/harshtrivedi4480-cyber/daily-code-practice/tree/master/0039-combination-sum) |
 | [0040-combination-sum-ii](https://github.com/harshtrivedi4480-cyber/daily-code-practice/tree/master/0040-combination-sum-ii) |
+| [0042-trapping-rain-water](https://github.com/harshtrivedi4480-cyber/daily-code-practice/tree/master/0042-trapping-rain-water) |
 ## Backtracking
 |  |
 | ------- |
@@ -63,4 +64,20 @@ solutions/
 |  |
 | ------- |
 | [3517-smallest-palindromic-rearrangement-i](https://github.com/harshtrivedi4480-cyber/daily-code-practice/tree/master/3517-smallest-palindromic-rearrangement-i) |
+## Two Pointers
+|  |
+| ------- |
+| [0042-trapping-rain-water](https://github.com/harshtrivedi4480-cyber/daily-code-practice/tree/master/0042-trapping-rain-water) |
+## Dynamic Programming
+|  |
+| ------- |
+| [0042-trapping-rain-water](https://github.com/harshtrivedi4480-cyber/daily-code-practice/tree/master/0042-trapping-rain-water) |
+## Stack
+|  |
+| ------- |
+| [0042-trapping-rain-water](https://github.com/harshtrivedi4480-cyber/daily-code-practice/tree/master/0042-trapping-rain-water) |
+## Monotonic Stack
+|  |
+| ------- |
+| [0042-trapping-rain-water](https://github.com/harshtrivedi4480-cyber/daily-code-practice/tree/master/0042-trapping-rain-water) |
 <!---LeetCode Topics End-->
