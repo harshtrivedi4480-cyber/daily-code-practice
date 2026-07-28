@@ -44,6 +44,7 @@ solutions/
 |  |
 | ------- |
 | [0038-count-and-say](https://github.com/harshtrivedi4480-cyber/daily-code-practice/tree/master/0038-count-and-say) |
+| [3517-smallest-palindromic-rearrangement-i](https://github.com/harshtrivedi4480-cyber/daily-code-practice/tree/master/3517-smallest-palindromic-rearrangement-i) |
 ## Array
 |  |
 | ------- |
@@ -52,4 +53,12 @@ solutions/
 |  |
 | ------- |
 | [0039-combination-sum](https://github.com/harshtrivedi4480-cyber/daily-code-practice/tree/master/0039-combination-sum) |
+## Sorting
+|  |
+| ------- |
+| [3517-smallest-palindromic-rearrangement-i](https://github.com/harshtrivedi4480-cyber/daily-code-practice/tree/master/3517-smallest-palindromic-rearrangement-i) |
+## Counting Sort
+|  |
+| ------- |
+| [3517-smallest-palindromic-rearrangement-i](https://github.com/harshtrivedi4480-cyber/daily-code-practice/tree/master/3517-smallest-palindromic-rearrangement-i) |
 <!---LeetCode Topics End-->
