@@ -37,3 +37,11 @@ solutions/
 - [ ] 30-day streak
 - [ ] 100 problems solved
 - [ ] Cover all major DSA topics (Arrays, LinkedList, Trees, DP, Graphs, Backtracking)
+
+<!---LeetCode Topics Start-->
+# LeetCode Topics
+## String
+|  |
+| ------- |
+| [0038-count-and-say](https://github.com/harshtrivedi4480-cyber/daily-code-practice/tree/master/0038-count-and-say) |
+<!---LeetCode Topics End-->
