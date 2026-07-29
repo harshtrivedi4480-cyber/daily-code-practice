@@ -74,6 +74,7 @@ solutions/
 | ------- |
 | [0042-trapping-rain-water](https://github.com/harshtrivedi4480-cyber/daily-code-practice/tree/master/0042-trapping-rain-water) |
 | [0061-rotate-list](https://github.com/harshtrivedi4480-cyber/daily-code-practice/tree/master/0061-rotate-list) |
+| [0082-remove-duplicates-from-sorted-list-ii](https://github.com/harshtrivedi4480-cyber/daily-code-practice/tree/master/0082-remove-duplicates-from-sorted-list-ii) |
 ## Dynamic Programming
 |  |
 | ------- |
@@ -94,4 +95,5 @@ solutions/
 |  |
 | ------- |
 | [0061-rotate-list](https://github.com/harshtrivedi4480-cyber/daily-code-practice/tree/master/0061-rotate-list) |
+| [0082-remove-duplicates-from-sorted-list-ii](https://github.com/harshtrivedi4480-cyber/daily-code-practice/tree/master/0082-remove-duplicates-from-sorted-list-ii) |
 <!---LeetCode Topics End-->
