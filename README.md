@@ -44,6 +44,7 @@ solutions/
 |  |
 | ------- |
 | [0038-count-and-say](https://github.com/harshtrivedi4480-cyber/daily-code-practice/tree/master/0038-count-and-say) |
+| [0049-group-anagrams](https://github.com/harshtrivedi4480-cyber/daily-code-practice/tree/master/0049-group-anagrams) |
 | [3517-smallest-palindromic-rearrangement-i](https://github.com/harshtrivedi4480-cyber/daily-code-practice/tree/master/3517-smallest-palindromic-rearrangement-i) |
 ## Array
 |  |
@@ -51,6 +52,7 @@ solutions/
 | [0039-combination-sum](https://github.com/harshtrivedi4480-cyber/daily-code-practice/tree/master/0039-combination-sum) |
 | [0040-combination-sum-ii](https://github.com/harshtrivedi4480-cyber/daily-code-practice/tree/master/0040-combination-sum-ii) |
 | [0042-trapping-rain-water](https://github.com/harshtrivedi4480-cyber/daily-code-practice/tree/master/0042-trapping-rain-water) |
+| [0049-group-anagrams](https://github.com/harshtrivedi4480-cyber/daily-code-practice/tree/master/0049-group-anagrams) |
 ## Backtracking
 |  |
 | ------- |
@@ -59,6 +61,7 @@ solutions/
 ## Sorting
 |  |
 | ------- |
+| [0049-group-anagrams](https://github.com/harshtrivedi4480-cyber/daily-code-practice/tree/master/0049-group-anagrams) |
 | [3517-smallest-palindromic-rearrangement-i](https://github.com/harshtrivedi4480-cyber/daily-code-practice/tree/master/3517-smallest-palindromic-rearrangement-i) |
 ## Counting Sort
 |  |
@@ -80,4 +83,8 @@ solutions/
 |  |
 | ------- |
 | [0042-trapping-rain-water](https://github.com/harshtrivedi4480-cyber/daily-code-practice/tree/master/0042-trapping-rain-water) |
+## Hash Table
+|  |
+| ------- |
+| [0049-group-anagrams](https://github.com/harshtrivedi4480-cyber/daily-code-practice/tree/master/0049-group-anagrams) |
 <!---LeetCode Topics End-->
