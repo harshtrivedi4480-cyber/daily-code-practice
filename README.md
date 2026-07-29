@@ -45,6 +45,7 @@ solutions/
 | ------- |
 | [0038-count-and-say](https://github.com/harshtrivedi4480-cyber/daily-code-practice/tree/master/0038-count-and-say) |
 | [0049-group-anagrams](https://github.com/harshtrivedi4480-cyber/daily-code-practice/tree/master/0049-group-anagrams) |
+| [0058-length-of-last-word](https://github.com/harshtrivedi4480-cyber/daily-code-practice/tree/master/0058-length-of-last-word) |
 | [3517-smallest-palindromic-rearrangement-i](https://github.com/harshtrivedi4480-cyber/daily-code-practice/tree/master/3517-smallest-palindromic-rearrangement-i) |
 ## Array
 |  |
