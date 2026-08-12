@@ -1,73 +1,102 @@
-class Answer {
-    constructor() {
-        this.ans = [0, 0, 0];
-    }
+var getBiggestThree = function(grid) {
+    const m = grid.length;
+    const n = grid[0].length;
 
-    put(x) {
-        if (x > this.ans[0]) {
-            this.ans[2] = this.ans[1];
-            this.ans[1] = this.ans[0];
-            this.ans[0] = x;
-        } else if (x !== this.ans[0] && x > this.ans[1]) {
-            this.ans[2] = this.ans[1];
-            this.ans[1] = x;
-        } else if (x !== this.ans[0] && x !== this.ans[1] && x > this.ans[2]) {
-            this.ans[2] = x;
+    const downLeft = Array.from(
+        { length: m + 1 },
+        () => new Array(n + 1).fill(0)
+    );
+
+    const downRight = Array.from(
+        { length: m + 1 },
+        () => new Array(n + 1).fill(0)
+    );
+
+    // Build diagonal sums
+    for (let i = m - 1; i >= 0; i--) {
+        for (let j = 0; j < n; j++) {
+            downLeft[i][j] =
+                grid[i][j] +
+                (i + 1 < m && j - 1 >= 0
+                    ? downLeft[i + 1][j - 1]
+                    : 0);
+
+            downRight[i][j] =
+                grid[i][j] +
+                (i + 1 < m && j + 1 < n
+                    ? downRight[i + 1][j + 1]
+                    : 0);
         }
     }
 
-    get() {
-        const ret = [];
-        for (const num of this.ans) {
-            if (num !== 0) {
-                ret.push(num);
-            }
-        }
-        return ret;
-    }
-}
+    const sums = new Set();
 
-var getBiggestThree = function (grid) {
-    const m = grid.length,
-        n = grid[0].length;
-    const sum1 = Array.from({ length: m + 1 }, () => new Array(n + 2).fill(0));
-    const sum2 = Array.from({ length: m + 1 }, () => new Array(n + 2).fill(0));
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
 
-    for (let i = 1; i <= m; ++i) {
-        for (let j = 1; j <= n; ++j) {
-            sum1[i][j] = sum1[i - 1][j - 1] + grid[i - 1][j - 1];
-            sum2[i][j] = sum2[i - 1][j + 1] + grid[i - 1][j - 1];
-        }
-    }
+            // Size 0 rhombus
+            sums.add(grid[i][j]);
 
-    const ans = new Answer();
-    for (let i = 0; i < m; ++i) {
-        for (let j = 0; j < n; ++j) {
-            // a single cell is also a rhombus
-            ans.put(grid[i][j]);
-            for (let k = i + 2; k < m; k += 2) {
-                const ux = i,
-                    uy = j;
-                const dx = k,
-                    dy = j;
-                const lx = Math.floor((i + k) / 2),
-                    ly = j - Math.floor((k - i) / 2);
-                const rx = Math.floor((i + k) / 2),
-                    ry = j + Math.floor((k - i) / 2);
-                if (ly < 0 || ry >= n) {
+            for (let k = 1; i + 2 * k < m; k++) {
+
+                // Left and right corners must be inside grid
+                if (j - k < 0 || j + k >= n) {
                     break;
                 }
+
+                const leftRow = i + k;
+                const leftCol = j - k;
+
+                const rightRow = i + k;
+                const rightCol = j + k;
+
+                const bottomRow = i + 2 * k;
+                const bottomCol = j;
+
+                // Top -> Left
+                const topLeft =
+                    downLeft[i][j]
+                    - downLeft[leftRow][leftCol]
+                    + grid[leftRow][leftCol];
+
+                // Top -> Right
+                const topRight =
+                    downRight[i][j]
+                    - downRight[rightRow][rightCol]
+                    + grid[rightRow][rightCol];
+
+                // Left -> Bottom
+                const leftBottom =
+                    downRight[leftRow][leftCol]
+                    - downRight[bottomRow][bottomCol]
+                    + grid[bottomRow][bottomCol];
+
+                // Right -> Bottom
+                const rightBottom =
+                    downLeft[rightRow][rightCol]
+                    - downLeft[bottomRow][bottomCol]
+                    + grid[bottomRow][bottomCol];
+
+                /*
+                    Four corners are counted twice,
+                    so subtract them once.
+                */
                 const sum =
-                    sum2[lx + 1][ly + 1] -
-                    sum2[ux][uy + 2] +
-                    (sum1[rx + 1][ry + 1] - sum1[ux][uy]) +
-                    (sum1[dx + 1][dy + 1] - sum1[lx][ly]) +
-                    (sum2[dx + 1][dy + 1] - sum2[rx][ry + 2]) -
-                    (grid[ux][uy] + grid[dx][dy] + grid[lx][ly] + grid[rx][ry]);
-                ans.put(sum);
+                    topLeft +
+                    topRight +
+                    leftBottom +
+                    rightBottom
+                    - grid[i][j]
+                    - grid[leftRow][leftCol]
+                    - grid[rightRow][rightCol]
+                    - grid[bottomRow][bottomCol];
+
+                sums.add(sum);
             }
         }
     }
 
-    return ans.get();
+    return [...sums]
+        .sort((a, b) => b - a)
+        .slice(0, 3);
 };
