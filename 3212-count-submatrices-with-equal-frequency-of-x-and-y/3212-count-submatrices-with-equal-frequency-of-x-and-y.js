@@ -2,42 +2,31 @@ var numberOfSubmatrices = function(grid) {
     const m = grid.length;
     const n = grid[0].length;
 
-    const xPrefix = Array.from(
-        { length: m + 1 },
-        () => new Array(n + 1).fill(0)
-    );
-
-    const yPrefix = Array.from(
-        { length: m + 1 },
-        () => new Array(n + 1).fill(0)
-    );
-
     let ans = 0;
 
-    for (let i = 1; i <= m; i++) {
-        for (let j = 1; j <= n; j++) {
+    // balance[j] = X count - Y count
+    // xCount[j] = X count
+    let balance = new Array(n).fill(0);
+    let xCount = new Array(n).fill(0);
 
-            const isX = grid[i - 1][j - 1] === 'X' ? 1 : 0;
-            const isY = grid[i - 1][j - 1] === 'Y' ? 1 : 0;
+    for (let i = 0; i < m; i++) {
+        let rowBalance = 0;
+        let rowX = 0;
 
-            xPrefix[i][j] =
-                isX +
-                xPrefix[i - 1][j] +
-                xPrefix[i][j - 1] -
-                xPrefix[i - 1][j - 1];
+        for (let j = 0; j < n; j++) {
 
-            yPrefix[i][j] =
-                isY +
-                yPrefix[i - 1][j] +
-                yPrefix[i][j - 1] -
-                yPrefix[i - 1][j - 1];
+            if (grid[i][j] === 'X') {
+                rowBalance++;
+                rowX++;
+            } else if (grid[i][j] === 'Y') {
+                rowBalance--;
+            }
 
-            // Equal X and Y
-            // AND at least one X
-            if (
-                xPrefix[i][j] === yPrefix[i][j] &&
-                xPrefix[i][j] > 0
-            ) {
+            balance[j] += rowBalance;
+            xCount[j] += rowX;
+
+            // Equal X and Y + at least one X
+            if (balance[j] === 0 && xCount[j] > 0) {
                 ans++;
             }
         }
