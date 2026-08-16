@@ -2,45 +2,46 @@ var minAbsDiff = function(grid, k) {
     const m = grid.length;
     const n = grid[0].length;
 
-    const rows = m - k + 1;
-    const cols = n - k + 1;
+    const ans = [];
 
-    let ans = Array.from({ length: rows }, () => Array(cols).fill(0));
+    for (let i = 0; i <= m - k; i++) {
+        const row = [];
 
-    for (let i = 0; i < rows; i++) {
-        for (let j = 0; j < cols; j++) {
+        for (let j = 0; j <= n - k; j++) {
+            const values = new Set();
 
-            // Store distinct values
-            let set = new Set();
-
-            for (let r = i; r < i + k; r++) {
-                for (let c = j; c < j + k; c++) {
-                    set.add(grid[r][c]);
+            // Collect distinct values from k x k window
+            for (let x = i; x < i + k; x++) {
+                for (let y = j; y < j + k; y++) {
+                    values.add(grid[x][y]);
                 }
             }
 
             // Only one distinct value
-            if (set.size <= 1) {
-                ans[i][j] = 0;
+            if (values.size <= 1) {
+                row.push(0);
                 continue;
             }
 
-            // Sort distinct values
-            let values = [...set].sort((a, b) => a - b);
+            const sorted = Array.from(values).sort((a, b) => a - b);
 
             let minDiff = Infinity;
 
-            // Minimum difference will always be
-            // between adjacent elements after sorting
-            for (let x = 1; x < values.length; x++) {
+            // Minimum difference must be between adjacent
+            // values after sorting.
+            for (let p = 1; p < sorted.length; p++) {
                 minDiff = Math.min(
                     minDiff,
-                    values[x] - values[x - 1]
+                    sorted[p] - sorted[p - 1]
                 );
+
+                if (minDiff === 0) break;
             }
 
-            ans[i][j] = minDiff;
+            row.push(minDiff);
         }
+
+        ans.push(row);
     }
 
     return ans;
