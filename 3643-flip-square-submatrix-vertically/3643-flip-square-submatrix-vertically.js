@@ -4,9 +4,8 @@ var reverseSubmatrix = function(grid, x, y, k) {
 
     while (top < bottom) {
         for (let col = y; col < y + k; col++) {
-            let temp = grid[top][col];
-            grid[top][col] = grid[bottom][col];
-            grid[bottom][col] = temp;
+            [grid[top][col], grid[bottom][col]] =
+            [grid[bottom][col], grid[top][col]];
         }
 
         top++;
