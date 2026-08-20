@@ -1,14 +1,14 @@
 var constructProductMatrix = function(grid) {
     const MOD = 12345;
-
     const n = grid.length;
     const m = grid[0].length;
-    const total = n * m;
 
-    const ans = Array.from({ length: n }, () => Array(m).fill(0));
+    const ans = Array.from(
+        { length: n },
+        () => Array(m).fill(1)
+    );
 
-    // Prefix product:
-    // ans[i][j] = product of all elements before grid[i][j]
+    // Prefix product
     let prefix = 1;
 
     for (let i = 0; i < n; i++) {
@@ -19,8 +19,7 @@ var constructProductMatrix = function(grid) {
         }
     }
 
-    // Suffix product:
-    // Multiply ans[i][j] by all elements after grid[i][j]
+    // Suffix product
     let suffix = 1;
 
     for (let i = n - 1; i >= 0; i--) {
