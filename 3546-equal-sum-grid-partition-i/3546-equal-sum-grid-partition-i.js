@@ -4,14 +4,14 @@ var canPartitionGrid = function(grid) {
 
     let total = 0;
 
-    // Calculate total sum
+    // Total sum
     for (let i = 0; i < m; i++) {
         for (let j = 0; j < n; j++) {
             total += grid[i][j];
         }
     }
 
-    // If total is odd, it cannot be split equally.
+    // Equal partition possible only if total is even
     if (total % 2 !== 0) {
         return false;
     }
@@ -19,27 +19,27 @@ var canPartitionGrid = function(grid) {
     const target = total / 2;
 
     // Check horizontal cuts
-    let topSum = 0;
+    let sum = 0;
 
     for (let i = 0; i < m - 1; i++) {
         for (let j = 0; j < n; j++) {
-            topSum += grid[i][j];
+            sum += grid[i][j];
         }
 
-        if (topSum === target) {
+        if (sum === target) {
             return true;
         }
     }
 
     // Check vertical cuts
-    let leftSum = 0;
+    sum = 0;
 
     for (let j = 0; j < n - 1; j++) {
         for (let i = 0; i < m; i++) {
-            leftSum += grid[i][j];
+            sum += grid[i][j];
         }
 
-        if (leftSum === target) {
+        if (sum === target) {
             return true;
         }
     }
