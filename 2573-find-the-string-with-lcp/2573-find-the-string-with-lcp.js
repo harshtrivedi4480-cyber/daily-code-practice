@@ -1,59 +1,70 @@
+/**
+ * @param {number[][]} lcp
+ * @return {string}
+ */
 var findTheString = function(lcp) {
     const n = lcp.length;
-    const word = Array(n).fill("");
 
-    // Step 1: Diagonal check
-    // lcp[i][i] must be n - i
+    const word = new Array(n).fill('');
+
+    let charCode = 97; // 'a'
+
     for (let i = 0; i < n; i++) {
-        if (lcp[i][i] !== n - i) {
-            return "";
+
+        // Already assigned
+        if (word[i] !== '') {
+            continue;
         }
-    }
 
-    // Step 2: Assign characters greedily
-    // First unassigned position gets the smallest
-    // unused character.
-    let nextChar = 0;
-
-    for (let i = 0; i < n; i++) {
-        if (word[i] !== "") continue;
-
-        if (nextChar >= 26) {
+        // Only a-z are allowed
+        if (charCode > 122) {
             return "";
         }
 
-        const ch = String.fromCharCode(97 + nextChar);
-        nextChar++;
+        const ch = String.fromCharCode(charCode);
+        word[i] = ch;
 
-        for (let j = i; j < n; j++) {
+        // Every position having lcp[i][j] > 0
+        // must have the same character.
+        for (let j = i + 1; j < n; j++) {
             if (lcp[i][j] > 0) {
-                if (word[j] !== "" && word[j] !== ch) {
+                if (word[j] !== '' && word[j] !== ch) {
                     return "";
                 }
 
                 word[j] = ch;
             }
         }
+
+        charCode++;
     }
 
-    // Step 3: Validate the complete LCP matrix
+    // Verify the generated string against the entire matrix.
+    const actual = Array.from(
+        { length: n },
+        () => new Array(n).fill(0)
+    );
+
+    for (let i = n - 1; i >= 0; i--) {
+        for (let j = n - 1; j >= 0; j--) {
+
+            if (word[i] === word[j]) {
+                if (i === n - 1 || j === n - 1) {
+                    actual[i][j] = 1;
+                } else {
+                    actual[i][j] = actual[i + 1][j + 1] + 1;
+                }
+            }
+        }
+    }
+
     for (let i = 0; i < n; i++) {
         for (let j = 0; j < n; j++) {
-            let expected;
-
-            if (word[i] !== word[j]) {
-                expected = 0;
-            } else if (i === n - 1 || j === n - 1) {
-                expected = 1;
-            } else {
-                expected = 1 + lcp[i + 1][j + 1];
-            }
-
-            if (lcp[i][j] !== expected) {
+            if (actual[i][j] !== lcp[i][j]) {
                 return "";
             }
         }
     }
 
-    return word.join("");
+    return word.join('');
 };
